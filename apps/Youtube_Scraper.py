@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 import csv
 from youtube_comment_scraper_python import *
 import pandas as pd
@@ -20,6 +21,11 @@ st.title('Youtube WebScrap⛏️')
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
+options = webdriver.ChromeOptions()
+options.headless = True
+driver = webdriver.Chrome(options=options)
+driver.get(URL)
+
 url = st.text_input('Paste the Youtube Channel Link',"")
 if not url:
   st.warning('Please input a Link.')
@@ -30,7 +36,7 @@ name = re.compile(r"[A-Z]\w+")
 inp = name.findall(url)
 out = inp[0]
 st.write('Getting Data from', out, 'channel')
-driver.get(url)
+# driver.get(url)
 
 # url = input('Enter Youtube Video Url- ')
 # driver.get(url)
