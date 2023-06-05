@@ -1,3 +1,4 @@
 selenium==4.9.1
 webdriver-manager==3.8.6
 youtube-comment-scraper-python==1.0.0
+plotly==5.14.1
