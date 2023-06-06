@@ -56,16 +56,16 @@ driver = webdriver.Firefox(
     service=service,
 )
 url = st.text_input('Paste the Youtube Channel Link',"")
-    if not url:
-        st.warning('Please input a Link.')
-        st.stop()
-        st.success('Thank you for inputting a link.')
-    # url ='https://www.youtube.com/@YasoobKhalid/videos'
-    name = re.compile(r"[A-Z]\w+")
-    inp = name.findall(url)
-    out = inp[0]
-    st.write('Getting Data from', out, 'channel')
-    driver.get(url)
+if not url:
+    st.warning('Please input a Link.')
+    st.stop()
+    st.success('Thank you for inputting a link.')
+# url ='https://www.youtube.com/@YasoobKhalid/videos'
+name = re.compile(r"[A-Z]\w+")
+inp = name.findall(url)
+out = inp[0]
+st.write('Getting Data from', out, 'channel')
+driver.get(url)
 # with uc.Chrome(browser_executable_path=browser_executable_path,
 #                 # debug=False,
 #                 # headless=True,
