@@ -22,6 +22,15 @@ from pathlib import Path
 import undetected_chromedriver as uc
 
 
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
+
 browser_executable_path = shutil.which("chromium")
 print(browser_executable_path)
 
@@ -38,14 +47,15 @@ options.add_argument("--disable-features=NetworkService")
 options.add_argument("--window-size=1920x1080")
 options.add_argument("--disable-features=VizDisplayCompositor")
 
-with uc.Chrome(browser_executable_path=browser_executable_path,
-                # debug=False,
-                # headless=True,
-                options=options,
-                use_subprocess=False,
-                log_level=logging.DEBUG,
-                service_log_path='selenium.log') as driver:
-    url = st.text_input('Paste the Youtube Channel Link',"")
+
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
+url = st.text_input('Paste the Youtube Channel Link',"")
     if not url:
         st.warning('Please input a Link.')
         st.stop()
@@ -56,8 +66,26 @@ with uc.Chrome(browser_executable_path=browser_executable_path,
     out = inp[0]
     st.write('Getting Data from', out, 'channel')
     driver.get(url)
+# with uc.Chrome(browser_executable_path=browser_executable_path,
+#                 # debug=False,
+#                 # headless=True,
+#                 options=options,
+#                 use_subprocess=False,
+#                 log_level=logging.DEBUG,
+#                 service_log_path='selenium.log') as driver:
+#     url = st.text_input('Paste the Youtube Channel Link',"")
+#     if not url:
+#         st.warning('Please input a Link.')
+#         st.stop()
+#         st.success('Thank you for inputting a link.')
+#     # url ='https://www.youtube.com/@YasoobKhalid/videos'
+#     name = re.compile(r"[A-Z]\w+")
+#     inp = name.findall(url)
+#     out = inp[0]
+#     st.write('Getting Data from', out, 'channel')
+#     driver.get(url)
 
-time.sleep(1)
+# time.sleep(1)
 
 # options = Options()
 # options.add_argument("--headless")
