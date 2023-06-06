@@ -14,8 +14,22 @@ import pandas as pd
 import plotly.express as px
 import re
 import streamlit as st
+import logging
+import shutil
+import time
+from pathlib import Path
 
-options = Options()
+import undetected_chromedriver as uc
+
+
+browser_executable_path = shutil.which("chromium")
+print(browser_executable_path)
+
+# delete old log file
+Path('selenium.log').unlink(missing_ok=True)
+time.sleep(1)
+
+options = uc.ChromeOptions()
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
@@ -24,32 +38,62 @@ options.add_argument("--disable-features=NetworkService")
 options.add_argument("--window-size=1920x1080")
 options.add_argument("--disable-features=VizDisplayCompositor")
 
+with uc.Chrome(browser_executable_path=browser_executable_path,
+                # debug=False,
+                # headless=True,
+                options=options,
+                use_subprocess=False,
+                log_level=logging.DEBUG,
+                service_log_path='selenium.log') as driver:
+    url = st.text_input('Paste the Youtube Channel Link',"")
+    if not url:
+        st.warning('Please input a Link.')
+        st.stop()
+        st.success('Thank you for inputting a link.')
+    # url ='https://www.youtube.com/@YasoobKhalid/videos'
+    name = re.compile(r"[A-Z]\w+")
+    inp = name.findall(url)
+    out = inp[0]
+    st.write('Getting Data from', out, 'channel')
+    driver.get(url)
 
-def delete_selenium_log():
-    if os.path.exists('selenium.log'):
-        os.remove('selenium.log')
+time.sleep(1)
+
+# options = Options()
+# options.add_argument("--headless")
+# options.add_argument("--no-sandbox")
+# options.add_argument("--disable-dev-shm-usage")
+# options.add_argument("--disable-gpu")
+# options.add_argument("--disable-features=NetworkService")
+# options.add_argument("--window-size=1920x1080")
+# options.add_argument("--disable-features=VizDisplayCompositor")
 
 
-def show_selenium_log():
-    if os.path.exists('selenium.log'):
-        with open('selenium.log') as f:
-            content = f.read()
-            st.code(content)
+# def delete_selenium_log():
+#     if os.path.exists('selenium.log'):
+#         os.remove('selenium.log')
+
+
+# def show_selenium_log():
+#     if os.path.exists('selenium.log'):
+#         with open('selenium.log') as f:
+#             content = f.read()
+#             st.code(content)
 
 
 
-with webdriver.Chrome(options=options, service_log_path='selenium.log') as driver:
-  url = st.text_input('Paste the Youtube Channel Link',"")
-  if not url:
-    st.warning('Please input a Link.')
-    st.stop()
-  st.success('Thank you for inputting a link.')
-  # url ='https://www.youtube.com/@YasoobKhalid/videos'
-  name = re.compile(r"[A-Z]\w+")
-  inp = name.findall(url)
-  out = inp[0]
-  st.write('Getting Data from', out, 'channel')
-  driver.get(url)
+# with webdriver.Chrome(options=options, service_log_path='selenium.log') as driver:
+#   url = st.text_input('Paste the Youtube Channel Link',"")
+#   if not url:
+#     st.warning('Please input a Link.')
+#     st.stop()
+#   st.success('Thank you for inputting a link.')
+#   # url ='https://www.youtube.com/@YasoobKhalid/videos'
+#   name = re.compile(r"[A-Z]\w+")
+#   inp = name.findall(url)
+#   out = inp[0]
+#   st.write('Getting Data from', out, 'channel')
+#   driver.get(url)
   
   
 st.title('Youtube WebScrap⛏️')
