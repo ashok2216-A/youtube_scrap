@@ -5,6 +5,7 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import csv
@@ -14,23 +15,61 @@ import plotly.express as px
 import re
 import streamlit as st
 
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
+options.add_argument("--disable-features=NetworkService")
+options.add_argument("--window-size=1920x1080")
+options.add_argument("--disable-features=VizDisplayCompositor")
 
+
+def delete_selenium_log():
+    if os.path.exists('selenium.log'):
+        os.remove('selenium.log')
+
+
+def show_selenium_log():
+    if os.path.exists('selenium.log'):
+        with open('selenium.log') as f:
+            content = f.read()
+            st.code(content)
+
+
+
+with webdriver.Chrome(options=options, service_log_path='selenium.log') as driver:
+  url = st.text_input('Paste the Youtube Channel Link',"")
+  if not url:
+    st.warning('Please input a Link.')
+    st.stop()
+  st.success('Thank you for inputting a link.')
+  # url ='https://www.youtube.com/@YasoobKhalid/videos'
+  name = re.compile(r"[A-Z]\w+")
+  inp = name.findall(url)
+  out = inp[0]
+  st.write('Getting Data from', out, 'channel')
+  driver.get(url)
+  
+  
 st.title('Youtube WebScrap⛏️')
 
 # # ------------------------------------------------------------------------------CHANNEL DATA------------------------------------------------------------------------
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-url = st.text_input('Paste the Youtube Channel Link',"")
-if not url:
-  st.warning('Please input a Link.')
-  st.stop()
-st.success('Thank you for inputting a link.')
-# url ='https://www.youtube.com/@YasoobKhalid/videos'
-name = re.compile(r"[A-Z]\w+")
-inp = name.findall(url)
-out = inp[0]
-st.write('Getting Data from', out, 'channel')
+# url = st.text_input('Paste the Youtube Channel Link',"")
+# if not url:
+#   st.warning('Please input a Link.')
+#   st.stop()
+# st.success('Thank you for inputting a link.')
+# # url ='https://www.youtube.com/@YasoobKhalid/videos'
+# name = re.compile(r"[A-Z]\w+")
+# inp = name.findall(url)
+# out = inp[0]
+# st.write('Getting Data from', out, 'channel')
+
+
 # driver.get(url)
 
 # url = input('Enter Youtube Video Url- ')
