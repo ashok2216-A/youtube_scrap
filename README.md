@@ -1,5 +1,5 @@
-#Scraping YouTube Data
-#Scraping the YouTube Video Likes using Selenium and Python & Creating Web Application (Streamlit)
+# Scraping YouTube Data
+# Scraping the YouTube Video Likes using Selenium and Python & Creating Web Application (Streamlit)
 
 **Introduction to Web Scraping:**
 
