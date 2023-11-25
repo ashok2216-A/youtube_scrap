@@ -1,8 +1,12 @@
-Scraping YouTube Data
-Scraping the YouTube Video Likes using Selenium and Python & Creating Web Application (Streamlit)
-Introduction to Web Scraping:
+#Scraping YouTube Data
+#Scraping the YouTube Video Likes using Selenium and Python & Creating Web Application (Streamlit)
+
+**Introduction to Web Scraping:**
+
 Web scraping is the automated process of extracting information or data from websites. It involves writing a script or using software to access and gather data from web pages, transforming unstructured data on the web into a structured format that can be analyzed, stored, or used in various applications.
-Web Scraping Process:
+
+**Web Scraping Process:**
+
 Access Websites: A script or program accesses web pages, mimicking human browsing behavior.
 Retrieve Data: It extracts specific information from these web pages.
 Organize Data: The extracted data is structured and saved in a usable format (like CSV, JSON, or a database).
@@ -12,6 +16,7 @@ Data Extraction: The desired data, such as text, images, links, or tables, is ex
 Storage/Analysis: Extracted data is stored locally or analyzed for insights, automation, or integration into other systems.
 
 What is Selenium?
+
 Selenium scraping refers to using the Selenium framework, primarily employed for automating web browsers, to extract data from websites. It's a powerful tool used in web scraping to simulate human interaction with a web page by controlling a browser programmatically.
 Tools Required
 To get started, ensure you have the following tools installed:
