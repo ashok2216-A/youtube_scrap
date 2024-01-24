@@ -4,5 +4,5 @@ youtube-comment-scraper-python==1.0.0
 plotly==5.14.1
 seleniumbase==4.14.12
 undetected-chromedriver==3.4.7
-streamlit==1.23.1
+streamlit==1.30.0
 altair==5.0.1
