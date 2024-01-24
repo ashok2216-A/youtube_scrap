@@ -1,3 +1,8 @@
+services:
+  - name: web
+    env:
+      - key: CHROME_BIN
+        value: /usr/bin/google-chrome
 # Use an official Python runtime as a parent image
 FROM python:3.8-slim
 
