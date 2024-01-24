@@ -23,11 +23,11 @@ chromedriver_autoinstaller.install()
 # driver = webdriver.Chrome('/usr/bin/google-chrome') 
 chrome_path = '/usr/bin/google-chrome'
 # Set up Chrome options if needed
-# chrome_options = webdriver.ChromeOptions()
+chrome_options = webdriver.ChromeOptions()
 # Create the WebDriver instance
-# chrome_options.binary_location = chrome_path
-# driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
-driver = webdriver.Chrome()
+chrome_options.binary_location = chrome_path
+driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
+# driver = webdriver.Chrome()
 url = st.text_input('Paste the Youtube Channel Link',"")
 if not url:
   st.warning('Please input a Link.')
