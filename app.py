@@ -25,6 +25,7 @@ chrome_path = '/usr/bin/google-chrome'
 # Set up Chrome options if needed
 chrome_options = webdriver.ChromeOptions()
 # Create the WebDriver instance
+chrome_options.binary_location = chrome_path
 driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
 
 url = st.text_input('Paste the Youtube Channel Link',"")
