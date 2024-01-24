@@ -19,7 +19,8 @@ st.title('Youtube WebScrap⛏️')
 
 # # ------------------------------------------------------------------------------CHANNEL DATA------------------------------------------------------------------------
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+driver = webdriver.Chrome('/usr/bin/google-chrome') 
 
 url = st.text_input('Paste the Youtube Channel Link',"")
 if not url:
