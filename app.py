@@ -9,6 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import csv
+import chromedriver_autoinstaller
 # from youtube_comment_scraper_python import *
 import pandas as pd
 import plotly.express as px
