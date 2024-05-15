@@ -1,6 +1,5 @@
 selenium==4.9.1
 webdriver-manager==3.8.6
-youtube-comment-scraper-python==1.0.0
 plotly==5.14.1
 seleniumbase==4.14.12
 undetected-chromedriver==3.4.7
