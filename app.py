@@ -20,17 +20,17 @@ st.title('Youtube WebScrap⛏️')
 
 # # ------------------------------------------------------------------------------CHANNEL DATA------------------------------------------------------------------------
 
-# chromedriver_autoinstaller.install()
-# # driver = webdriver.Chrome('/usr/bin/google-chrome') 
-# chrome_path = '/usr/bin/google-chrome'
-# # Set up Chrome options if needed
-# chrome_options = webdriver.ChromeOptions()
-# # Create the WebDriver instance
-# chrome_options.binary_location = chrome_path
-# driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
-driver = webdriver.Chrome(
-    service=ChromeService(ChromeDriverManager().install()))
-driver.implicitly_wait(5)
+chromedriver_autoinstaller.install()
+# driver = webdriver.Chrome('/usr/bin/google-chrome') 
+chrome_path = '/usr/bin/chromium-browser'
+# Set up Chrome options if needed
+chrome_options = webdriver.ChromeOptions()
+# Create the WebDriver instance
+chrome_options.binary_location = chrome_path
+driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
+# driver = webdriver.Chrome(
+#     service=ChromeService(ChromeDriverManager().install()))
+# driver.implicitly_wait(5)
 # driver = webdriver.Chrome()
 url = st.text_input('Paste the Youtube Channel Link',"")
 if not url:
