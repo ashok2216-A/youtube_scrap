@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import csv
-from youtube_comment_scraper_python import *
+# from youtube_comment_scraper_python import *
 import pandas as pd
 import plotly.express as px
 import re
