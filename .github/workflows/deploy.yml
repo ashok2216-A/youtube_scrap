@@ -31,7 +31,7 @@ jobs:
         # sudo apt -f install
         # google-chrome --version
         mkdir drivers
-        wget -O drivers/chromedriver https://chromedriver.storage.googleapis.com/LATEST_RELEASE_115.0.5790
+        wget -O drivers/chromedriver https://chromedriver.storage.googleapis.com/LATEST_RELEASE_114.0.5735.90
         unzip drivers/chromedriver.zip -d drivers
     
     - name: Install dependencies
