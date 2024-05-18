@@ -28,7 +28,7 @@ st.title('Youtube WebScrap⛏️')
 
 chromedriver_autoinstaller.install()
 # driver = webdriver.Chrome('/usr/bin/chromedriver') 
-chrome_path = '/usr/bin/chromedriver'
+chrome_path = '/usr/local/bin/chromedriver'
 # # Set up Chrome options if needed
 chrome_options = webdriver.ChromeOptions()
 # # Create the WebDriver instance
