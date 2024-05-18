@@ -24,12 +24,12 @@ jobs:
         python-version: "3.10"
     -name: linux commands
      run: |
-          apt update
-          apt upgrade
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt -f install
-          google-chrome --version
+          echo apt update
+          echo apt upgrade
+          echo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          echo dpkg -i google-chrome-stable_current_amd64.deb
+          echo sudo apt -f install
+          echo google-chrome --version
     
     - name: Install dependencies
       run: |
