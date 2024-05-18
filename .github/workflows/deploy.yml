@@ -24,12 +24,15 @@ jobs:
         python-version: "3.10"
     - name: linux commands
       run: |
-        sudo apt update
-        sudo apt upgrade
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        dpkg -i google-chrome-stable_current_amd64.deb
-        sudo apt -f install
-        google-chrome --version
+        # sudo apt update
+        # sudo apt upgrade
+        # wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        # dpkg -i google-chrome-stable_current_amd64.deb
+        # sudo apt -f install
+        # google-chrome --version
+        mkdir drivers
+        wget -O drivers/chromedriver https://chromedriver.storage.googleapis.com/
+        unzip drivers/chromedriver.zip -d drivers
     
     - name: Install dependencies
       run: |
