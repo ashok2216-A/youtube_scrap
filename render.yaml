@@ -3,6 +3,17 @@ services:
     env:
       - key: CHROME_BIN
         value: /usr/bin/google-chrome
+- name: linux commands
+      run: |
+        sudo apt update
+        sudo apt upgrade
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt -f install
+        google-chrome --version
+        # mkdir drivers
+        # wget -O drivers/chromedriver https://chromedriver.storage.googleapis.com/LATEST_RELEASE_114.0.5735.90
+        # unzip drivers/chromedriver.zip -d drivers
 # Use an official Python runtime as a parent image
 FROM python:3.8-slim
 
