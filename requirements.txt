@@ -3,6 +3,6 @@ webdriver-manager==3.8.6
 plotly==5.14.1
 seleniumbase==4.14.12
 undetected-chromedriver==3.4.7
-streamlit==1.30.0
+streamlit==1.37.0
 altair==5.0.1
 chromedriver-autoinstaller==0.6.4
